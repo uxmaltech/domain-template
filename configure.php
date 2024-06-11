@@ -2,7 +2,7 @@
 <?php
 
 // Solicitar al usuario que ingrese el nuevo nombre del paquete
-echo 'Ingrese el nuevo nombre del paquete: ';
+echo 'Ingrese el nombre del paquete: ';
 $packageName = trim(fgets(STDIN));
 
 // Verificar que el usuario ingresó un nombre
@@ -74,8 +74,7 @@ echo "Archivo de migración renombrado a $newMigrationFile\n";
 
 rename('src/Domains/PackageTemplate', 'src/Domains/'.$packageNamePascal);
 
-// Ejecutar dump-autoload para actualizar el archivo composer.json
-echo "Ejecutando composer dump-autoload...\n";
-exec('composer dump-autoload');
+echo "Ejecutando instalación de los paquetes de composer...\n";
+exec('composer install && rm ./configure.php');
 
 echo "Configuración completada.\n";
