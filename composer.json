@@ -1,0 +1,37 @@
+{
+    "name": "uxmal-tech/package-template",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "UxmalTech\\{{ packageName }}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "UxmalTech\\{{ packageName }}\\Database\\": "database/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "orchestra/testbench": "^9.1",
+        "laravel/pint": "^1.16"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test:coverage": "pest --coverage --min=95"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "UxmalTech\\{{ packageName }}\\ServiceProvider"
+            ]
+        }
+    }
+}
